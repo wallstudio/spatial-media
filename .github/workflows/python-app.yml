@@ -1,0 +1,35 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+
+name: Python application
+
+on:
+  push:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.7"
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -U pyinstaller
+    - name: Build
+      run: |
+        cd spatialmedia
+        pyinstaller spatial_media_metadata_injector.spec
+    - name: Archive
+      uses: actions/upload-artifact@v2
+      with:
+        name: SpatialMediaMetadataInjector
+        path: "spatialmedia\\dist\\Spatial Media Metadata Injector.exe"
