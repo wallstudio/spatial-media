@@ -5,7 +5,7 @@ import sys
 
 block_cipher = None
 
-a = Analysis(['gui.py'],
+a = Analysis(['__main__.py'],
              binaries=None,
              datas=None,
              hiddenimports=[],
@@ -26,7 +26,7 @@ exe = EXE(pyz,
           debug=False,
           strip=False,
           upx=True,
-          console=False )
+          console=True )
 if sys.platform == 'darwin':
     app = BUNDLE(exe,
                  name='Spatial Media Metadata Injector.app',
