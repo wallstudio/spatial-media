@@ -30,7 +30,7 @@ jobs:
         pyinstaller spatial_media_metadata_injector.spec
     - name: Test
       run: |
-        "'spatialmedia\\dist\\Spatial Media Metadata Injector.exe' -h"
+        spatialmedia\\dist\\Spatial` Media` Metadata` Injector.exe -h
     - name: Archive
       uses: actions/upload-artifact@v2
       with:
